@@ -1,0 +1,13 @@
+[
+  {
+    "status": ["In Progress", "Completed", "Pending", "Notified", "Cancelled"],
+    "city": [
+      "Rio das ostras",
+      "Barra de sao joao",
+      "Rio dourado",
+      "Tamoios/Unamar",
+      "Casimiro de abreu",
+      "Professor souza"
+    ]
+  }
+]

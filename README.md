@@ -1,0 +1,3 @@
+- GET: /api/v1/orders
+- GET ID: /api/v1/orders/:id
+- POST: /api/v1/orders
