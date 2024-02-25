@@ -1,19 +1,19 @@
-const express = require('express');
-const orderController = require('../controllers/orderController');
+const express = require("express");
+const orderController = require("../controllers/orderController");
 
 const router = express.Router();
 
-router.param('id', (req, res, next, val) => {
+router.param("id", (req, res, next, val) => {
   console.log(`Order id is: ${val}`);
   next();
 });
 
 router
-  .route('/')
+  .route("/")
   .get(orderController.getAllOrders)
-  .post(orderController.createOrder);
+  .post(orderController.checkBody, orderController.createOrder);
 router
-  .route('/:id')
+  .route("/:id")
   .get(orderController.getOrder)
   .patch(orderController.updateOrder)
   .delete(orderController.deleteOrder);
