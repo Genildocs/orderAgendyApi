@@ -1,29 +1,30 @@
 exports.getAllOrders = async (req, res) => {
   res.status(200).json({
-    status: "success",
+    status: 'success',
   });
 };
 
 exports.getOrder = async (req, res) => {
   res.status(200).json({
-    status: "success",
+    status: 'success',
   });
 };
 
 exports.createOrder = async (req, res) => {
   res.status(201).json({
-    status: "success",
+    status: 'success',
   });
 };
 
 exports.updateOrder = async (req, res) => {
   res.status(200).json({
-    status: "success",
+    status: 'success',
   });
 };
 
-exports.deleteOrder = async (req, res) => {
+exports.deleteOrder = (req, res) => {
   res.status(204).json({
-    status: "success",
+    status: 'success',
+    data: null,
   });
 };
