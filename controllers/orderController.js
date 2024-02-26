@@ -1,28 +1,36 @@
 const Ordem = require("../models/orderModel");
 
 exports.getAllOrders = async (req, res) => {
-  const orders = await Ordem.find();
-  res.status(200).json({
-    status: "success",
-    results: orders.length,
-    data: orders,
-  });
+  try {
+    const orders = await Ordem.find();
+    res.status(200).json({
+      status: "success",
+      results: orders.length,
+      data: orders,
+    });
+  } catch (err) {
+    res.status(404).json({ message: err });
+  }
 };
 
 exports.getOrder = async (req, res) => {
-  const id = req.params.id * 1;
+  const ordersId = await Ordem.findById(req.params.id);
   res.status(200).json({
     status: "success",
-    data: id,
+    data: ordersId,
   });
 };
 
 exports.createOrder = async (req, res) => {
-  const newOrder = await Ordem.create(req.body);
-  newOrder.save();
-  res.status(201).json({
-    status: "success",
-  });
+  try {
+    const newOrder = await Ordem.create(req.body);
+    res.status(201).json({
+      status: "success",
+      data: newOrder,
+    });
+  } catch (err) {
+    res.status(400).json({ status: "fail", message: err });
+  }
 };
 
 exports.updateOrder = async (req, res) => {
@@ -34,7 +42,8 @@ exports.updateOrder = async (req, res) => {
   });
 };
 
-exports.deleteOrder = (req, res) => {
+exports.deleteOrder = async (req, res) => {
+  await Ordem.findByIdAndDelete(req.params._id);
   res.status(204).json({
     status: "success",
     data: null,

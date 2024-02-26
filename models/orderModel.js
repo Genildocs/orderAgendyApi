@@ -46,7 +46,7 @@ const ordemSchema = new mongoose.Schema({
   },
   criadoEm: {
     type: String,
-    default: moment().format("LLL"),
+    horario: moment().format("LLL"),
   },
   criadoPor: String,
 });
