@@ -40,6 +40,7 @@ const ordemSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  criadoPor: String,
 });
 
 const Ordem = mongoose.model("Ordem", ordemSchema);
