@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const moment = require("moment");
 
 const ordemSchema = new mongoose.Schema({
   ordem: {
@@ -23,6 +24,9 @@ const ordemSchema = new mongoose.Schema({
   tecnico: {
     type: String,
     required: true,
+    modalidade: {
+      type: String,
+    },
   },
   servico: {
     type: String,
@@ -31,14 +35,18 @@ const ordemSchema = new mongoose.Schema({
   tipoServico: {
     type: String,
     required: true,
+    subTipo: {
+      type: String,
+      required: true,
+    },
   },
   prioridade: {
     type: String,
     required: true,
   },
   criadoEm: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    default: moment().format("LLL"),
   },
   criadoPor: String,
 });
