@@ -11,7 +11,7 @@ router.param("id", (req, res, next, val) => {
 router
   .route("/")
   .get(orderController.getAllOrders)
-  .post(orderController.checkBody, orderController.createOrder);
+  .post(orderController.createOrder);
 router
   .route("/:id")
   .get(orderController.getOrder)
