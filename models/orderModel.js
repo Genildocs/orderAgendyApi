@@ -11,11 +11,21 @@ const ordemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  status: String,
+  login: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  status: {
+    type: String,
+    default: "Pendente",
+  },
   city: {
     type: String,
     required: true,
   },
+  endereco: String,
+  agendamento: String,
   periodo: {
     type: String,
     required: true,
