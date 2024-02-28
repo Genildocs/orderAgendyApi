@@ -2,7 +2,20 @@ const Ordem = require("../models/orderModel");
 
 exports.getAllOrders = async (req, res) => {
   try {
-    const orders = await Ordem.find();
+    //Build query
+    const queryObj = { ...req.query };
+    const excludedFields = ["page", "sort", "limit", "fields"];
+    excludedFields.forEach((el) => delete queryObj[el]);
+
+    let query = Ordem.find(queryObj);
+    //Sorting
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(",").join(" ");
+      query = query.sort(sortBy);
+    }
+
+    //Execute query
+    const orders = await query;
     res.status(200).json({
       status: "success",
       results: orders.length,
@@ -65,7 +78,7 @@ exports.updateOrder = async (req, res) => {
 
 exports.deleteOrder = async (req, res) => {
   try {
-    await Ordem.findByIdAndDelete(req.params._id);
+    await Ordem.findByIdAndDelete(req.params.id);
     res.status(204).json({
       status: "success",
       data: null,

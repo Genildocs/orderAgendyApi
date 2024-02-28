@@ -10,11 +10,11 @@ const ordemSchema = new mongoose.Schema({
   nome: {
     type: String,
     required: true,
+    trim: true,
   },
   login: {
     type: String,
     required: true,
-    unique: true,
   },
   status: {
     type: String,
@@ -24,19 +24,21 @@ const ordemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  endereco: String,
-  agendamento: String,
-  periodo: {
+  rua: {
     type: String,
     required: true,
   },
-  horario: String,
-  tecnico: {
+  bairro: {
     type: String,
     required: true,
-    modalidade: {
-      type: String,
-    },
+  },
+  agendamento: {
+    type: String,
+    required: true,
+  },
+  periodo: {
+    type: String,
+    required: true,
   },
   servico: {
     type: String,
@@ -45,18 +47,18 @@ const ordemSchema = new mongoose.Schema({
   tipoServico: {
     type: String,
     required: true,
-    subTipo: {
-      type: String,
-      required: true,
-    },
   },
   prioridade: {
     type: String,
     required: true,
   },
+  observacao: {
+    type: String,
+    trim: true,
+  },
   criadoEm: {
     type: String,
-    horario: moment().format("LLL"),
+    default: moment().format("LLL"),
   },
   criadoPor: String,
 });

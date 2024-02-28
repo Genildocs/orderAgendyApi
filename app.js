@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const moment = require("moment");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const orderRouter = require("./routes/orderRoutes");
